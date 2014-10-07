@@ -22,10 +22,10 @@ snap_in_mount = false;
 use <bushing.scad>
 
 module mountingholes(){
-					translate(v = [0, -25, -5]) polyhole(m3_diameter,10);
-					//translate(v = [0, -25, 5]) cylinder(h = 9, r=m4_nut_diameter/2, $fn=6, center=true);		
-					translate(v = [0, 25, -5]) polyhole(m3_diameter,10);
-					//translate(v = [0, 25, 5]) cylinder(h = 9, r=4.5, $fn=6, center=true);
+					//translate(v = [0, -25, -5]) polyhole(m3_diameter,10);
+					//translate(v = [0, -36.875, 5]) cylinder(h = 9, r=m4_nut_diameter/2, $fn=6, center=true);		
+					//translate(v = [0, 25, -5]) polyhole(m3_diameter,10);
+					//translate(v = [0, 36.875, 5]) cylinder(h = 9, r=4.5, $fn=6, center=true);
 }
 
 module xcarriage(linear_bearings){
@@ -35,19 +35,20 @@ union(){
 			difference(){
 				union(){
 					//Base block
-						translate(v = [15, 0, 0])cube(size = [35,50,5], center = true);
-						translate(v = [0, 18.5, 0]) cube(size = [35,20,5], center = true);
-						translate(v = [-2.4, -6, 0]) rotate(a=[0,0,15]) cylinder(h = 5, r=35, $fn=5, center=true);
-						translate(v = [0, -31, 0]) cylinder(h = 5, r=m4_nut_diameter/2+2, $fn=6, center=true);	
+						translate(v = [0, 0, 0])cube(size = [50,88,5], center = true);
+						//translate(v = [15, 0, 0])cube(size = [35,50,5], center = true);
+						//translate(v = [0, 18.5, 0]) cube(size = [35,20,5], center = true);
+						//translate(v = [-2.4, -6, 0]) rotate(a=[0,0,15]) cylinder(h = 5, r=35, $fn=5, center=true);
+						//translate(v = [0, -31, 0]) cylinder(h = 5, r=m4_nut_diameter/2+2, $fn=6, center=true);	
 					//Nut holder base - extruder
 					
 					if(linear_bearings){
 						//Nut holder base - belt clamps
-							translate(v = [23-(7.5/2)+5, -11, 0]) cube(size = [45-7.5+10,15,5], center = true);
-							translate(v = [(33+45/2-7.5), -11, 0]) cylinder(h = 5, r=7.5, $fn=18, center=true);
+							translate(v = [23-(7.5/2)+5, -22, 0]) cube(size = [45-7.5+10,15,5], center = true);
+							translate(v = [(33+45/2-7.5), -22, 0]) cylinder(h = 5, r=7.5, $fn=18, center=true);
 						//Nut holder base - belt clamps
-							translate(v = [23-(7.5/2)+5, 11, 0]) cube(size = [45-7.5+10,15,5], center = true);
-							translate(v = [(33+45/2-7.5), 11, 0]) cylinder(h = 5, r=7.5, $fn=18, center=true);
+							translate(v = [23-(7.5/2)+5, 22, 0]) cube(size = [45-7.5+10,15,5], center = true);
+							translate(v = [(33+45/2-7.5), 22, 0]) cylinder(h = 5, r=7.5, $fn=18, center=true);
 						
 					}else{
 						//Nut holder base - belt clamps
@@ -60,9 +61,10 @@ union(){
 				
 				//holes for linear bearings
 				if(linear_bearings){
-					translate(v = [25.01,-30.01,5.01])lm8uu_bearing_cut();
-					translate(v = [25.01,30.01,5.01])lm8uu_bearing_cut();	
-					translate(v = [-25.01,30.01,5.01])lm8uu_bearing_cut();
+					translate(v = [25.01,0,0])lm8uu_bearing_cut();
+					//translate(v = [25.01,36,5.01])lm8uu_bearing_cut();	
+					translate(v = [-25.01,36.75,0])lm8uu_bearing_cut();
+					translate(v = [-25.01,-36.75,0])lm8uu_bearing_cut();
 					//translate(v = [-35,-30,0]) rotate(a=[0,0,20]) cube(size = [30,70,10], center = true);
 				}
 				// holes for connecting extruder
@@ -111,29 +113,32 @@ union(){
 						}	
 					}
 					//removing some mass	
-					translate(v = [0, 36, 0]) cylinder(h = 9, r=14, $fn=6, center=true);	
+					//translate(v = [0, 36, 0]) cylinder(h = 9, r=14, $fn=6, center=true);	
 		
 					// Hotend hole
-					translate(v = [0, -6, 0]) cylinder(h = 20, r=20, $fn=20, center=true);
+					translate(v = [-10, 0, 0]) cube(size = [40,45,10], center = true);
 		
 					//NORMAL MOUNT END
+					translate(v = [0, -36.75, 0]) cylinder(h = 9, r=1.7, center=true);
+					translate(v = [0, 36.75, 0]) cylinder(h = 9, r=1.7, center=true);
 				}
+
 				//ZIPTIE holes for connecting belt
-				//translate(v = [38, -18, 2]) cube(size = [5,3.5,30], center = true);
+				translate(v = [38, -22, 2]) cube(size = [5,3.5,30], center = true);
 
 				if(linear_bearings){
 				//belt clamp holes
 				translate(v = [0,-22,0]){
-				translate(v = [30, 11, -5]) polyhole(m3_diameter,10);
-				translate(v = [30, 11, 0.55]) nut(m3_nut_diameter,9);
-				translate(v = [48, 11, -5]) polyhole(m3_diameter,10);
-				translate(v = [48, 11, 0.55]) nut(m3_nut_diameter,9);
+				translate(v = [30, 22, -5]) polyhole(m3_diameter,10);
+				translate(v = [30, 22, 0.55]) nut(m3_nut_diameter,9);
+				translate(v = [48, 22, -5]) polyhole(m3_diameter,10);
+				translate(v = [48, 22, 0.55]) nut(m3_nut_diameter,9);
 				}
 
-				translate(v = [30, 11, -5]) polyhole(m3_diameter,10);
-				translate(v = [30, 11, 0.55]) nut(m3_nut_diameter,9);
-				translate(v = [48, 11, -5]) polyhole(m3_diameter,10);
-				translate(v = [48, 11, 0.55]) nut(m3_nut_diameter,9);
+				translate(v = [30, 22, -5]) polyhole(m3_diameter,10);
+				translate(v = [30, 22, 0.55]) nut(m3_nut_diameter,9);
+				translate(v = [48, 22, -5]) polyhole(m3_diameter,10);
+				translate(v = [48, 22, 0.55]) nut(m3_nut_diameter,9);
 				}else{//belt clamp holes
 				translate(v = [0,-36,0]){
 				translate(v = [30, 18, -5]) polyhole(m3_diameter,10);
@@ -152,11 +157,12 @@ union(){
 	}
 if(linear_bearings){
 	difference(){
-		translate(v = [25.01,-29.81,0]) cut_corners(true,true,false,false);
-		translate(v = [0, -6, 0]) cylinder(h = 60, r=20, $fn=20, center=true);
+		translate(v = [25.01,0,0]) cut_corners(false,false,false,false);
+		//translate(v = [0, -6, 0]) cylinder(h = 60, r=20, $fn=20, center=true);
 	}
-	translate(v = [25.01,28.01,0])cut_corners(false,false,true, true);
-	translate(v = [-25.01,20.51,0])cut_corners(false,false,true, true);
+	//translate(v = [25.01,28.01,0])cut_corners(false,false,true, true);
+	translate(v = [-25.01,36.75,0])cut_corners(false,false,false, false);
+	translate(v = [-25.01,-36.75,0])cut_corners(false,false,false, false);
 }else{
 translate(v = [25.01,-30.01,5.01])standart_bushing();
 translate(v = [-25.01,-30.01,5.01])standart_bushing();
@@ -164,6 +170,14 @@ translate(v = [25.01,30.01,5.01])standart_bushing();
 translate(v = [-25.01,30.01,5.01])standart_bushing();
 }
 }
+
+//center mount
+difference(){
+translate(v = [0, 0, 2.5]) cube(size = [30,18,5], center = true);
+translate(v = [5.1, 0, 2.5]) cylinder(h = 9, r=1.7, center=true);
+translate(v = [-5.1, 0, 2.5]) cylinder(h = 9, r=1.7, center=true);
+}
+
 }
 
 

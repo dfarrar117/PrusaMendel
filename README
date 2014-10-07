@@ -1,34 +1,14 @@
-Prusa Mendel iteration 2
+dfarrar117/PrusaMendel
 
-This is second big change, formerly known as felt branch.
-Released 11.11.11 :-)
+Forked from the Prusa Mendel iteration 2 11.11.11 release.
 
-Please read http://reprap.org/wiki/Prusa_Mendel before attempting to build this. There is also PDF (manual-wiki) with backup documentation from reprap.org.  
+These changes were made to adapt the x-carriage in order to fit the Dual Head MK9+ extruder onto the Prusa Mendel.  Changes were made to the following files:
 
-Imported stuff:
-Extruder by Greg Frost
-Parametric Involute Bevel and Spur Gears by GregFrost
-Belt pulley is http://www.thingiverse.com/thing:3104 by GilesBathgate
+configuration.scad:
+	linear = true;
 
-Prusa Mendel part list:
-
-To print (not including the extruder drive):
-
-4x frame-vertex-with-foot
-2x frame-vertex-without-foot
-2x coupling
-1x x-carriage
-1x x-end-idler
-1x x-end-motor
-2x z-motor-mount
-4x belt-clamp
-2x belt-clamp-nut-holder
-8x bar-clamp
-2x rod-clamp
-1x y-motor-bracket
-3x y-bushing
-3x endstop-holder
-
-X90390893??°03I
+x-carriage.scad:
+	-removed standard single extruder hole and mount
+	-added center support and screw holes.  Widened overall base to fit MK9 dual extruder.
 
 
